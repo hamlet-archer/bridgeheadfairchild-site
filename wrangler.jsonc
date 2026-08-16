@@ -1,0 +1,20 @@
+{
+  // Explicit because implicit stopped working. This repo carried no build
+  // config at all: Workers Builds deployed it by inference until 2026-08-16,
+  // when the same four files that built on 2026-08-02 began failing with
+  // nothing in the repo changed. A deploy that works by inference is one that
+  // breaks on someone else's release note.
+  //
+  // `name` must stay `bridgeheadfairchild-site` — that is the live Worker
+  // serving the apex, and a different name would deploy a second one beside it
+  // rather than replacing it.
+  "name": "bridgeheadfairchild-site",
+  "compatibility_date": "2026-08-16",
+  // The site files moved into public/ rather than staying at the root: with
+  // the repo root as the asset directory, AGENTS.md and this file would be
+  // uploaded and served too, and a marketing site publishing its own agent
+  // instructions at /AGENTS.md is not the intent.
+  "assets": {
+    "directory": "./public"
+  }
+}
